@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales & Automation Specialist</title>
+    <!-- Tailwind CSS CDN for rapid, responsive styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter for a clean, modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Define a CSS variable for navigation height for easy adjustment */
+        :root {
+            --nav-height: 80px; /* Approximate height of the navigation bar */
+        }
+
+        /* Custom styles for the 3D canvas to fill its container */
+        #three-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+            position: absolute; /* Position absolutely within the hero section */
+            top: 0;
+            left: 0;
+            z-index: 0; /* Ensure it's behind other content */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000; /* Primary: Black */
+            color: #e2e8f0; /* Light text color for contrast */
+        }
+        /* Smooth scrolling for navigation */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a; /* Darker track for black theme */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333333; /* Slightly lighter thumb */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555555; /* Even lighter on hover */
+        }
+        /* Section borders for visual separation */
+        .section-border {
+            border-top: 1px solid rgba(255, 215, 0, 0.2); /* Subtle golden yellow border */
+        }
+
+        /* Navigation is now absolute within the body, effectively "at the top" */
+        nav {
+            height: var(--nav-height); /* Set navigation height */
+            position: absolute; /* Changed to absolute */
+            top: 0; /* Position at the very top */
+            width: 100%; /* Ensure full width */
+            z-index: 50; /* Ensure it's above other content */
+        }
+
+        /* Hero section starts directly below the nav visually */
+        #hero {
+            height: calc(100vh - var(--nav-height)); /* Adjust hero height to fill remaining screen below nav */
+            padding-top: var(--nav-height); /* Push content inside hero down to clear nav */
+        }
+
+        /* Project card styles: now with solid backgrounds and improved padding */
+        .project-card {
+            position: relative;
+            overflow: hidden; /* Ensure content stays within bounds */
+            background-color: #0a0a0a; /* Solid dark background for cards */
+            padding: 2.5rem; /* Increased padding for more space */
+            /* Removed background-size, background-position, background-repeat */
+            background-image: none !important; /* Force removal of any background images */
+        }
+
+        /* Dark overlay for text readability over background images - now removed as images are gone */
+        .project-card::before {
+            content: none; /* Explicitly remove the overlay */
+        }
+
+        .project-card > * {
+            position: relative;
+            z-index: 2; /* Ensure content is above the overlay */
+        }
+
+        /* Removed specific background-image rules as they are no longer needed */
+
+        /* Style for highlighted contact info */
+        .highlight-contact {
+            background-color: transparent; /* Changed to transparent */
+            padding: 0.25rem 0.5rem; /* Minimized padding further */
+            border-radius: 0.3rem; /* Slightly smaller rounded corners */
+            display: inline-block; /* Allows padding and background to wrap content */
+            margin-bottom: 0.25rem; /* Reduced space between items */
+            border: 1px solid #FFD700; /* Golden yellow border */
+            transition: transform 0.3s ease-in-out; /* Smooth hover effect */
+            font-size: 0.75rem; /* text-xs equivalent, minimized */
+        }
+        .highlight-contact:hover {
+            transform: scale(1.05); /* Slightly enlarge on hover */
+        }
+
+        /* New style for the grouped contact info box */
+        .contact-info-box {
+            background-color: transparent; /* Changed to transparent to remove black background */
+            padding: 0.5rem; /* Minimized padding inside the box */
+            border-radius: 0.75rem; /* Rounded corners for the box */
+            border: 1px solid #FFD700; /* Golden yellow border for the box */
+            margin-top: 2rem; /* Space above the box */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center content horizontally */
+            gap: 0.25rem; /* Minimized space between items inside the box */
+        }
+
+        /* Style for the "READY FOR REAL GROWTH?" box */
+        .cta-box-contact { /* Renamed to avoid conflict if another cta-box exists */
+            background-color: #0a0a0a; /* Darker background for the box */
+            padding: 2rem; /* Ample padding inside the box */
+            border-radius: 1rem; /* Rounded corners for the box */
+            border: 1px solid #FFD700; /* Golden yellow border for the box */
+            margin-bottom: 2rem; /* Space below the box */
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-black bg-opacity-80 backdrop-blur-sm w-full z-50 shadow-lg rounded-b-lg">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#hero" class="flex items-center space-x-2 text-yellow-500 hover:text-yellow-400 transition duration-300 ease-in-out rounded-md p-2">
+                <!-- SVG Logo for Sales & Automation -->
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7V17L12 22L22 17V7L12 2ZM12 4.14L19.78 8.44L12 12.74L4.22 8.44L12 4.14ZM4 9.5L11 13.5V20.5L4 16.5V9.5ZM13 20.5V13.5L20 9.5V16.5L13 20.5Z" fill="#FFD700"/>
+                    <path d="M12 12.74L19.78 8.44L12 4.14L4.22 8.44L12 12.74Z" fill="url(#paint0_linear_1_2)"/>
+                    <defs>
+                        <linearGradient id="paint0_linear_1_2" x1="12" y1="4.14" x2="12" y2="12.74" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#FFD700"/>
+                            <stop offset="1" stop-color="#FFA500"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </a>
+            <div class="flex space-x-6">
+                <a href="#about" class="text-gray-300 hover:text-yellow-500 transition duration-300 ease-in-out font-medium rounded-md p-2">ABOUT</a>
+                <a href="#portfolio" class="text-gray-300 hover:text-yellow-500 transition duration-300 ease-in-out font-medium rounded-md p-2">WORK</a>
+                <a href="#testimonials" class="text-gray-300 hover:text-yellow-500 transition duration-300 ease-in-out font-medium rounded-md p-2">TESTIMONIALS</a>
+                <a href="#services" class="text-gray-300 hover:text-yellow-500 transition duration-300 ease-in-out font-medium rounded-md p-2">SERVICES</a>
+                <a href="#contact" class="text-gray-300 hover:text-yellow-500 transition duration-300 ease-in-out font-medium rounded-md p-2">CONNECT</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with 3D Animation -->
+    <section id="hero" class="relative h-screen flex items-center justify-center text-center overflow-hidden bg-black">
+        <canvas id="three-canvas"></canvas>
+        <div class="relative z-10 p-8 bg-[#0a0a0a] bg-opacity-70 rounded-xl shadow-2xl max-w-3xl mx-auto border border-yellow-500">
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-4 animate-pulse">
+                ACCELERATE YOUR SALES. AUTOMATE YOUR GROWTH.
+            </h1>
+            <p class="text-xl md:text-2xl text-yellow-300 font-light mb-8">
+                I automate sales. I generate leads. I build your pipeline.
+            </p>
+            <a href="#contact" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+                BOOST MY SALES NOW
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-[#0a0a0a] text-center px-6 section-border">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-4xl font-bold text-yellow-500 mb-8">ABOUT YOUR GROWTH PARTNER</h2>
+            <p class="text-lg leading-relaxed text-gray-300 mb-6">
+                I drive sales. I build automation. My goal is your growth.
+            </p>
+            <p class="text-lg leading-relaxed text-gray-300">
+                For 6 years, I delivered results for Coaches, Consultants, B2B and B2C businesses, SaaS companies, Insurance Companies, and Marketing Agencies. My methods: AI automation, precise Lead Generation, powerful Email Campaigns, and LinkedIn automation. Social Media Management is also a core part of my strategy. I find your ideal clients. I activate your sales pipeline. I secure guaranteed meetings. I free your time. Your sales explode.
+            </p>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-[#1a1a1a] px-6 section-border">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-4xl font-bold text-yellow-500 text-center mb-12">CLIENT SUCCESS: MY PROVEN RESULTS</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Project 1: Cold Email Automation Sample -->
+                <div class="p-8 rounded-xl shadow-xl border border-[#C0A000] transform hover:scale-105 transition duration-300 ease-in-out project-card">
+                    <div class="text-yellow-500 text-lg font-bold mb-4">EMAIL AUTOMATION</div>
+                    <!-- Icon for Email Automation -->
+                    <div class="mb-4 flex justify-center">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 6C22 5.44772 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V18C2 18.5523 2.44772 19 3 19H21C21.5523 19 22 18.5523 22 18V6ZM20 7L12 12L4 7H20ZM20 17H4V8L12 13L20 8V17Z" fill="#FFD700"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mt-2 mb-3 flex items-center justify-center">
+                        Cold Email: Strong ROI for B2B Clients
+                        <i class="fas fa-chart-line text-yellow-500 ml-3"></i>
+                    </h3>
+                    <p class="text-gray-400 text-base mb-4 text-center">
+                        Deployed targeted cold email campaigns for B2B companies. Result: <strong>30% increase</strong> in qualified leads, <strong>50-60 new sales appointments</strong> booked in 30 days.
+                    </p>
+                    <a href="https://drive.google.com/file/d/1jPxu6jA8EoNo_xPgecgJaJA7MY_1Xgqv/view?usp=sharing" target="_blank" class="text-yellow-500 hover:text-yellow-400 font-medium inline-flex items-center justify-center w-full">
+                        View Analytics
+                        <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+                <!-- Project 2: Lead Generation Sample -->
+                <div class="p-8 rounded-xl shadow-xl border border-[#C0A000] transform hover:scale-105 transition duration-300 ease-in-out project-card">
+                    <div class="text-yellow-500 text-lg font-bold mb-4">LEAD GENERATION</div>
+                    <!-- Icon for Lead Generation -->
+                    <div class="mb-4 flex justify-center">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" fill="#FFD700"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mt-2 mb-3 flex items-center justify-center">
+                        Lead Generation: Massive Verified Leads
+                        <i class="fas fa-chart-bar text-yellow-500 ml-3"></i>
+                    </h3>
+                    <p class="text-gray-400 text-base mb-4 text-center">
+                        Implemented advanced lead generation strategies. Result: <strong>20,000+ verified leads</strong> in 1 day, enough to run campaigns for 1 week. This fuels your sales directly with hyper-personalization.
+                    </p>
+                    <a href="https://drive.google.com/file/d/1SM-L7Sjhr3xl3efbLr34c_w18Trxk0nl/view?usp=sharing" target="_blank" class="text-yellow-500 hover:text-yellow-400 font-medium inline-flex items-center justify-center w-full">
+                        See Results
+                        <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+                <!-- Project 3: LinkedIn Automation Sample -->
+                <div class="p-8 rounded-xl shadow-xl border border-[#C0A000] transform hover:scale-105 transition duration-300 ease-in-out project-card linkedin-automation-bg">
+                    <div class="text-yellow-500 text-lg font-bold mb-4">LINKEDIN AUTOMATION</div>
+                    <!-- Icon for LinkedIn Automation -->
+                    <div class="mb-4 flex justify-center">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.447 20.452H16.525V13.565C16.525 11.921 16.495 9.805 14.388 9.805C12.245 9.805 11.916 11.536 11.916 13.454V20.452H7.994V8.45H11.724V10.158H11.78C12.305 9.176 13.62 9.006 14.485 9.006C18.665 9.006 18.73 11.758 18.73 13.916V20.452H20.447ZM4.017 6.714C3.998 6.714 3.979 6.714 3.96 6.714C2.714 6.714 1.705 5.705 1.705 4.459C1.705 3.213 2.714 2.204 3.96 2.204C5.206 2.204 6.215 3.213 6.215 4.459C6.215 5.705 5.206 6.714 3.96 6.714H4.017ZM5.994 8.45H2.072V20.452H5.994V8.45Z" fill="#FFD700"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mt-2 mb-3 flex items-center justify-center">
+                        LinkedIn Automation: 10-15 Meetings Monthly
+                        <i class="fas fa-chart-line text-yellow-500 ml-3"></i>
+                    </h3>
+                    <p class="text-gray-400 text-base mb-4 text-center">
+                        Automated LinkedIn outreach for B2B clients. Result: Consistent <strong>10-15 qualified discovery calls</strong> scheduled per month, direct pipeline growth.
+                    </p>
+                    <a href="https://www.linkedin.com/in/mico-jay-saluta-0a42032b9/" target="_blank" class="text-yellow-500 hover:text-yellow-400 font-medium inline-flex items-center justify-center w-full">
+                        View Profile
+                        <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+                <!-- Project 4: Social Media Management Sample -->
+                <div class="p-8 rounded-xl shadow-xl border border-[#C0A000] transform hover:scale-105 transition duration-300 ease-in-out project-card social-media-bg">
+                    <div class="text-yellow-500 text-lg font-bold mb-4">SOCIAL MEDIA</div>
+                    <!-- Icon for Social Media -->
+                    <div class="mb-4 flex justify-center space-x-4">
+                        <i class="fab fa-facebook text-yellow-500 text-4xl"></i>
+                        <i class="fab fa-tiktok text-yellow-500 text-4xl"></i>
+                        <i class="fab fa-instagram text-yellow-500 text-4xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mt-2 mb-3 flex items-center justify-center">
+                        Social Media: Strong Engagement Boost
+                        <i class="fas fa-chart-bar text-yellow-500 ml-3"></i>
+                    </h3>
+                    <p class="text-gray-400 text-base mb-4 text-center">
+                        Managed and optimized social media presence for B2B and B2C brands. Result: <strong>30-50% engagement increase</strong>, <strong>15% direct sales attribution</strong>.
+                    </p>
+                    <a href="https://drive.google.com/drive/folders/1SeeWEy1wjSHT99NiQP__2pK1WYt-ijDn?usp=sharing" target="_blank" class="text-yellow-500 hover:text-yellow-400 font-medium inline-flex items-center justify-center w-full">
+                        View Visuals
+                        <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+                <!-- Project 5: AI Automation (Workflow & Funnels) Sample -->
+                <div class="p-8 rounded-xl shadow-xl border border-yellow-500 col-span-1 md:col-span-2 transform hover:scale-105 transition duration-300 ease-in-out project-card ai-automation-bg">
+                    <div class="text-yellow-500 text-lg font-bold mb-4">AI WORKFLOW OPTIMIZATION</div>
+                    <!-- Icon for AI Workflow Optimization -->
+                    <div class="mb-4 flex justify-center">
+                        <i class="fas fa-robot text-yellow-500 text-4xl mr-2"></i>
+                        <i class="fas fa-microchip text-yellow-500 text-4xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-yellow-500 mt-2 mb-3 flex items-center justify-center">
+                        PREMIUM SERVICE: AI Automation
+                        <i class="fas fa-chart-line text-yellow-500 ml-3"></i>
+                    </h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        I integrate AI across your entire workflow and sales funnels. This eliminates manual grind, optimizes every step, and guarantees a seamless, high-converting path from lead to closed deal. Pure, automated sales power.
+                    </p>
+                    <a href="#contact" class="text-yellow-500 hover:text-yellow-400 font-medium inline-flex items-center justify-center w-full">
+                        Contact for More Details
+                        <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-[#0a0a0a] px-6 section-border">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-4xl font-bold text-yellow-500 text-center mb-12">VOICES OF VICTORY: CLIENTS SPEAK</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Testimonial 1: Brendan Reyes -->
+                <div class="bg-[#1a1a1a] p-8 rounded-xl shadow-xl border border-[#C0A000] flex flex-col items-center text-center">
+                    <img src="https://i.imgur.com/IxJjcq8.jpeg" alt="Brendan Reyes" class="w-32 h-32 rounded-full object-cover mb-6 border-4 border-yellow-500">
+                    <p class="text-xl italic text-gray-300 mb-4">
+                        "Your expertise directly boosted our leads and sales. A clear, impactful partnership."
+                    </p>
+                    <div class="text-yellow-500 mb-2">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-white font-semibold text-lg">Brendan Reyes</p>
+                    <p class="text-gray-400 text-sm">Insurance Broker</p>
+                </div>
+                <!-- Testimonial 2: Devin Pratt -->
+                <div class="bg-[#1a1a1a] p-8 rounded-xl shadow-xl border border-[#C0A000] flex flex-col items-center text-center">
+                    <img src="https://i.imgur.com/psjK8Tv.jpeg" alt="Devin Pratt" class="w-32 h-32 rounded-full object-cover mb-6 border-4 border-yellow-500">
+                    <p class="text-xl italic text-gray-300 mb-4">
+                        "Your independent task handling is impressive. A valuable asset to our operations."
+                    </p>
+                    <div class="text-yellow-500 mb-2">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-white font-semibold text-lg">Devin Pratt</p>
+                    <p class="text-gray-400 text-sm">CEO of PRISM</p>
+                </div>
+                <!-- Testimonial 3: Jasmine Rabara -->
+                <div class="bg-[#1a1a1a] p-8 rounded-xl shadow-xl border border-[#C0A000] flex flex-col items-center text-center">
+                    <img src="https://i.imgur.com/UftLeKF.jpeg" alt="Jasmine Rabara" class="w-32 h-32 rounded-full object-cover mb-6 border-4 border-yellow-500">
+                    <p class="text-xl italic text-gray-300 mb-4">
+                        "Your specialized expertise is a game-changer. You deliver exceptional value, consistently."
+                    </p>
+                    <div class="text-yellow-500 mb-2">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-white font-semibold text-lg">Jasmine Rabara</p>
+                    <p class="text-gray-400 text-sm">Agency Owner</p>
+                </div>
+                <!-- Testimonial 4: Rechebal Louis -->
+                <div class="bg-[#1a1a1a] p-8 rounded-xl shadow-xl border border-[#C0A000] flex flex-col items-center text-center">
+                    <img src="https://i.imgur.com/2K8vGaH.jpeg" alt="Rechebal Louis" class="w-32 h-32 rounded-full object-cover mb-6 border-4 border-yellow-500">
+                    <p class="text-xl italic text-gray-300 mb-4">
+                        "Your strategic insights and dedicated AI automation, social media, and lead generation efforts have driven significant revenue growth for our business. Your expertise is invaluable."
+                    </p>
+                    <div class="text-yellow-500 mb-2">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-white font-semibold text-lg">Rechebal Louis</p>
+                    <p class="text-gray-400 text-sm">Agency Owner</p>
+                </div>
+                <!-- New Testimonial 5: Email Automation - Meetings & Sales Surge -->
+                <div class="bg-[#1a1a1a] p-8 rounded-xl shadow-xl border border-[#C0A000] flex flex-col items-center text-center">
+                    <img src="https://i.imgur.com/qGpuSBE.jpeg" alt="Alex Johnson" class="w-32 h-32 rounded-full object-cover mb-6 border-4 border-yellow-500">
+                    <p class="text-xl italic text-gray-300 mb-4">
+                        "Your email automation is a revenue machine. We saw a direct surge in booked meetings and closed deals. Unmatched results."
+                    </p>
+                    <div class="text-yellow-500 mb-2">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-white font-semibold text-lg">Alex Johnson</p>
+                    <p class="text-gray-400 text-sm">Tech Startup Founder</p>
+                </div>
+                <!-- New Testimonial 6: Lead Gen - Hyper-Personalized Pipeline with Clay -->
+                <div class="bg-[#1a1a1a] p-8 rounded-xl shadow-xl border border-[#C0A000] flex flex-col items-center text-center">
+                    <img src="https://i.imgur.com/5Eq3hUK.jpeg" alt="Sarah Chen" class="w-32 h-32 rounded-full object-cover mb-6 border-4 border-yellow-500">
+                    <p class="text-xl italic text-gray-300 mb-4">
+                        "The hyper-personalized lead generation, especially with Clay, is a killer move for our email campaigns. It's a proven system that delivers."
+                    </p>
+                    <div class="text-yellow-500 mb-2">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-white font-semibold text-lg">Sarah Chen</p>
+                    <p class="text-gray-400 text-sm">Marketing Director</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-[#1a1a1a] px-6 section-border">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-4xl font-bold text-yellow-500 text-center mb-12">YOUR PROBLEM: MY SOLUTIONS</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Service 1: Cold Email Automation -->
+                <div class="bg-[#0a0a0a] p-8 rounded-xl shadow-xl border border-[#C0A000]">
+                    <h3 class="text-2xl font-semibold text-white mb-4">Cold Email Automation: Funneling Leads</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Automated, high-converting cold email campaigns. I fill your pipeline with qualified prospects, driving direct sales opportunities.
+                    </p>
+                </div>
+                <!-- Service 2: Lead Generation -->
+                <div class="bg-[#0a0a0a] p-8 rounded-xl shadow-xl border border-[#C0A000]">
+                    <h3 class="text-2xl font-semibold text-white mb-4">Lead Generation: Fueling Your Sales</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Precision lead identification and acquisition. I find your ideal clients, delivering a constant stream of sales-ready contacts.
+                    </p>
+                </div>
+                <!-- Service 3: LinkedIn Automation -->
+                <div class="bg-[#0a0a0a] p-8 rounded-xl shadow-xl border border-[#C0A000]">
+                    <h3 class="text-2xl font-semibold text-white mb-4">LinkedIn Automation: Network to Net Worth</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Automated LinkedIn outreach to connect with decision-makers. I expand your reach and generate direct meeting bookings.
+                    </p>
+                </div>
+                <!-- Service 4: Social Media Management -->
+                <div class="bg-[#0a0a0a] p-8 rounded-xl shadow-xl border border-[#C0A000]">
+                    <h3 class="text-2xl font-semibold text-white mb-4">Social Media Management: Brand Dominance</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Strategic social media presence that builds authority and drives engagement. I turn followers into paying clients.
+                    </p>
+                </div>
+                <!-- High Premium Service: AI Automation (Workflow Integration & Sales Funnels) -->
+                <div class="bg-[#0a0a0a] p-8 rounded-xl shadow-xl border border-yellow-500 col-span-1 md:col-span-2">
+                    <h3 class="text-2xl font-semibold text-yellow-500 mb-4">PREMIUM SERVICE: AI Automation</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        I integrate AI across your entire workflow and sales funnels. This eliminates manual grind, optimizes every step, and guarantees a seamless, high-converting path from lead to closed deal. Pure, automated sales power.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section (Re-imagined) -->
+    <section id="tools" class="py-20 bg-[#0a0a0a] px-6 section-border">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-4xl font-bold text-yellow-500 text-center mb-12">My Expertise: Tools for Sales Success</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-[#1a1a1a] p-6 rounded-xl shadow-lg border border-[#C0A000]">
+                    <h3 class="text-xl font-semibold text-white mb-3">AI Automation & Outreach</h3>
+                    <ul class="list-disc list-inside text-gray-400 space-y-2">
+                        <li>Reachinbox: For relentless email automation.</li>
+                        <li>Apollo.io: Precise lead data.</li>
+                        <li>LinkedIn Sales Navigator: Unlocking key connections.</li>
+                        <li>Pro Gemini: Crafting compelling, customized scripts.</li>
+                        <li>Go High Level: Comprehensive automation.</li>
+                        <li>Zapier: Workflow integration.</li>
+                        <li>Make.com: Advanced automation.</li>
+                        <li>Klaviyo: Email marketing.</li>
+                        <li>B2B Rocket: Specialized B2B outreach.</li>
+                        <li>Brevo: Transactional emails.</li>
+                        <li>Instantly: Cold email sending.</li>
+                        <li>Clay: Hyper-personalized lead data.</li>
+                        <li>Mail Verifier: Email list cleaning.</li>
+                    </ul>
+                </div>
+                <div class="bg-[#1a1a1a] p-6 rounded-xl shadow-lg border border-[#C0A000]">
+                    <h3 class="text-xl font-semibold text-white mb-3">Project & Workflow Command</h3>
+                    <ul class="list-disc list-inside text-gray-400 space-y-2">
+                        <li>ClickUp, Trello: For ruthless task management.</li>
+                        <li>Asana: Project tracking.</li>
+                        <li>Monday.com: Team collaboration.</li>
+                        <li>Slack, Zoom: For rapid, decisive communication.</li>
+                        <li>Google Workspace: Integrated productivity.</li>
+                        <li>Microsoft Teams: Enterprise communication.</li>
+                    </ul>
+                </div>
+                <div class="bg-[#1a1a1a] p-6 rounded-xl shadow-lg border border-[#C0A000]">
+                    <h3 class="text-xl font-semibold text-white mb-3">Creative & Analytics Firepower</h3>
+                    <ul class="list-disc list-inside text-gray-400 space-y-2">
+                        <li>Canva, CapCut: For stunning visual and video content.</li>
+                        <li>Adobe Creative Suite: Professional design.</li>
+                        <li>Airtable: Flexible data organization.</li>
+                        <li>Google Analytics: Web traffic insights.</li>
+                        <li>HubSpot: CRM and marketing analytics.</li>
+                        <li>Analytics Platforms: Tracking every metric for victory.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-[#0a0a0a] px-6 section-border">
+        <div class="container mx-auto max-w-2xl">
+            <div class="cta-box-contact">
+                <h2 class="text-4xl font-bold text-yellow-500 mb-8 text-center">READY FOR REAL GROWTH?</h2>
+                <p class="text-lg text-gray-300 mb-8 text-center">
+                    Your competition isn't waiting. Neither should you. Connect directly.
+                </p>
+            </div>
+            <div class="mb-8 flex justify-center">
+                <img src="https://i.imgur.com/ALbvYYf.png" alt="Your Profile Picture" class="w-48 h-48 rounded-full object-cover border-4 border-yellow-500 shadow-lg animate-pulse">
+            </div>
+            <form class="space-y-6" onsubmit="sendEmail(event)">
+                <div>
+                    <input type="text" id="contactName" placeholder="Your Name" class="w-full p-4 rounded-lg bg-[#2a2a2a] border border-[#3a3a3a] text-white placeholder-gray-400 focus:outline-none focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500" required>
+                </div>
+                <div>
+                    <input type="email" id="contactEmail" placeholder="Your Email" class="w-full p-4 rounded-lg bg-[#2a2a2a] border border-[#3a3a3a] text-white placeholder-gray-400 focus:outline-none focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500" required>
+                </div>
+                <div>
+                    <textarea id="contactMessage" placeholder="How can I help you?" rows="6" class="w-full p-4 rounded-lg bg-[#2a2a2a] border border-[#3a3a3a] text-white placeholder-gray-400 focus:outline-none focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500" required></textarea>
+                </div>
+                <div>
+                    <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-4 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+                        SEND NOW
+                    </button>
+                </div>
+            </form>
+            <div class="mt-10 contact-info-box">
+                <p class="text-gray-400">Or reach directly:</p>
+                <p class="text-sm text-white font-semibold">
+                    Email: <a href="mailto:Micojaysfernandez@gmail.com" class="text-yellow-500 hover:underline">Micojaysfernandez@gmail.com</a>
+                </p>
+                <p class="text-sm text-white font-semibold">
+                    Phone: <a href="tel:+639456807963" class="text-yellow-500 hover:underline">+639456807963</a>
+                </p>
+                <p class="text-sm text-white font-semibold">
+                    Resume/CV: <a href="https://automation-growthspecialist.github.io/Mico-Jay-F-Saluta-cv/Mico_Saluta_cv.html" class="text-yellow-500 hover:underline">Mico_Saluta_cv.html</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8 text-center text-gray-500 text-sm section-border">
+        <div class="container mx-auto px-6">
+            <p>&copy; 2025 Sales & Automation Specialist. All rights reserved. Built with relentless precision.</p>
+        </div>
+    </footer >
+
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Function to send email
+        function sendEmail(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const name = document.getElementById('contactName').value;
+            const email = document.getElementById('contactEmail').value;
+            const message = document.getElementById('contactMessage').value;
+            const recipientEmail = 'Micojaysfernandez@gmail.com'; // Your contact email
+
+            const subject = `New Inquiry from Portfolio: ${name}`;
+            const body = `Name: ${name}\nEmail: ${email}\n\nMessage: ${message}`;
+
+            // Use mailto link to open default email client
+            window.location.href = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            // Optionally, clear the form after attempting to send
+            // document.getElementById('contactName').value = '';
+            // document.getElementById('contactEmail').value = '';
+            // document.getElementById('contactMessage').value = '';
+        }
+
+        // Ensure the script runs after the window loads
+        window.onload = function() {
+            // Scene setup
+            const scene = new THREE.Scene();
+            scene.background = null; // Make background transparent to show CSS background
+
+            // Camera setup
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 5;
+
+            // Renderer setup
+            const renderer = new THREE.WebGLRenderer({
+                canvas: document.getElementById('three-canvas'),
+                alpha: true // Enable transparency for the canvas
+            });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio); // Optimize for high-DPI screens
+
+            // Create a particle system for an "AI background moving" effect
+            const particlesGeometry = new THREE.BufferGeometry();
+            const particlesCount = 5000; // Number of particles
+
+            const posArray = new Float32Array(particlesCount * 3); // x, y, z for each particle
+
+            for (let i = 0; i < particlesCount; i++) {
+                // Random positions within a cube
+                posArray[i * 3] = (Math.random() - 0.5) * 100;
+                posArray[i * 3 + 1] = (Math.random() - 0.5) * 100;
+                posArray[i * 3 + 2] = (Math.random() - 0.5) * 100;
+            }
+
+            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+
+            // Particle material
+            const particlesMaterial = new THREE.PointsMaterial({
+                size: 0.05, // Size of each particle
+                color: 0xFFD700, // Vibrant Golden Yellow for particles
+                transparent: true,
+                opacity: 0.6,
+                blending: THREE.AdditiveBlending // For a glowing effect
+            });
+
+            const particleMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+            scene.add(particleMesh);
+
+            // Mouse interaction variables
+            let mouseX = 0, mouseY = 0;
+            let targetX = 0, targetY = 0;
+            const windowHalfX = window.innerWidth / 2;
+            const windowHalfY = window.innerHeight / 2;
+
+            // Event listeners for mouse movement to control camera/object rotation
+            document.addEventListener('mousemove', (event) => {
+                mouseX = (event.clientX - windowHalfX);
+                mouseY = (event.clientY - windowHalfY);
+            });
+
+            // Handle window resizing
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+
+                // Smoothly move target based on mouse position
+                targetX = mouseX * 0.0005; // Reduced sensitivity
+                targetY = mouseY * 0.0005; // Reduced sensitivity
+
+                // Rotate the particle system
+                particleMesh.rotation.y += 0.0005 + (targetX - particleMesh.rotation.y) * 0.05;
+                particleMesh.rotation.x += 0.0005 + (targetY - particleMesh.rotation.x) * 0.05;
+
+                // Make particles float slightly upwards for a dynamic AI effect
+                const positions = particleMesh.geometry.attributes.position.array;
+                for (let i = 0; i < particlesCount; i++) {
+                    positions[i * 3 + 1] += 0.01; // Move particles up along Y-axis
+                    if (positions[i * 3 + 1] > 50) { // Reset if too far up
+                        positions[i * 3 + 1] = -50;
+                    }
+                }
+                particleMesh.geometry.attributes.position.needsUpdate = true;
+
+
+                renderer.render(scene, camera);
+            }
+
+            // Start the animation
+            animate();
+        };
+    </script>
+</body>
+</html>
